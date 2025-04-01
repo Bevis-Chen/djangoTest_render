@@ -74,21 +74,17 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#         'USER': '你的用戶名',
-#         'PASSWORD': '你的密碼',
-#         'HOST': 'postgresql://djangotest_mvin_user:3VgcuYkriqjuYJJKn4ViMmnKNab9Foa7@dpg-cvg311btq21c73e050i0-a.oregon-postgres.render.com/djangotest_mvin',  # 本地测试，之后会改成 Render 的链接
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    "default": {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3", 
+    }
+}
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(default='postgresql://djangotest_mvin_user:3VgcuYkriqjuYJJKn4ViMmnKNab9Foa7@dpg-cvg311btq21c73e050i0-a.oregon-postgres.render.com/djangotest_mvin')
-}
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgresql://djangotest_mvin_user:3VgcuYkriqjuYJJKn4ViMmnKNab9Foa7@dpg-cvg311btq21c73e050i0-a.oregon-postgres.render.com/djangotest_mvin')
+# }
 
 
 # Password validation
@@ -133,3 +129,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
