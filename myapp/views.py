@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from datetime import datetime
+from django.http import JsonResponse
+from .models import Article
 import random 
 
 # Create your views here.
@@ -46,3 +48,9 @@ def djpost(request):
             return HttpResponse("帳密或密碼有誤! ")
     else:
         return render(request, "djpost.html", locals())
+    
+
+def article_list(request):
+    articles = Article.objects.all().values("id", "title", "content", "created_at")
+    return JsonResponse(list(articles), safe=False)
+   

@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp.views import sayhello, hello2, hello3, hello4, dice, show, djget, djpost
+from myapp.views import article_list
 
 urlpatterns = [
+    path("articles/", article_list),
     path("admin/", admin.site.urls),
     path("", sayhello), 
     path("hello2/<str:username>", hello2),
